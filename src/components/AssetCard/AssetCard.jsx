@@ -4,15 +4,17 @@ import BarChart from '../BarChart/BarChart';
 
 const AssetCard = () => {
 
+    const cardStyle = {
+      display: 'flex',
+      'flex-direction': 'column',
+      borderColor: 'green',
+      borderWidth: 4
+    }
+
   return (
-    <Card hoverable
+    <Card 
       title="asset name"
-      style={{
-        width: 240,
-        boxShadow: 50,
-        borderColor: 'green',
-        borderWidth: 4
-      }}
+      style={cardStyle}
       cover={<img alt="example" src="logo192.png" />}
     >
       <b>Model: </b> aaaa <br />

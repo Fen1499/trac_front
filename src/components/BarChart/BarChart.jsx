@@ -10,7 +10,7 @@ const options = {
   
     chart: {
       type: 'bar',
-      height: 95,
+      height: 120,
     },
     
     series: [{
