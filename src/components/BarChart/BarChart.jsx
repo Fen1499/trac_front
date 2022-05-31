@@ -1,48 +1,40 @@
-import React from "react"
+import React, {useState} from "react"
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 
-const options = {
-    title: {
-      text: 'Assets Health'
-    },
-    legend: {enabled: false},
-  
-    chart: {
-      type: 'bar',
-      height: 120,
-    },
-    
-    series: [{
-      name: "red",
-      data: [1],
-      color: "red"
-    }, {
-      name: "yellow",
-      data: [2],
-      color: "yellow"
-    }, {
-      name: "green",
-      data: [2],
-      color: "green"
-    }],
-  
-    xAxis: {
-      categories: ["assets"],
-    },
-  
-    yAxis: {
-      title: {text: ""}
-    },
-  
-    plotOptions: {
-      series: {
-        stacking: 'normal',
-      }, 
-    }
-  }
+  const BarChart = ( {p_title, p_data, p_height, p_category, p_ceiling} ) => {
+      const [options, setOptions] = useState(
+        {
+          title: {
+            text: p_title
+          },
+          legend: {enabled: false},
+        
+          chart: {
+            type: 'bar',
+            height: p_height,
+          },
+          
+          series: p_data,
+        
+          xAxis: {
+            categories: [p_category],
+          },
+        
+          yAxis: {
+            title: {text: ""},
+            floor: 0,
+            ceiling: p_ceiling
+          },
+        
+          plotOptions: {
+            series: {
+              stacking: 'normal',
+            }, 
+          }
+        }
+      )
 
-  const BarChart = () => {
       return (
         <HighchartsReact
         highcharts={Highcharts}

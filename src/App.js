@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import { Routes, Route} from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import LayoutComponent from './components/LayoutComponent/LayoutComponent';
 import UnitsPage from './components/UnitsPage/UnitsPage';
 
