@@ -12,13 +12,15 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import { Menu, Layout } from 'antd';
 const { Header, Sider, Content, Footer } = Layout;
 
-const LayoutComponent = () => {
+const LayoutComponent = ({token}) => {
   const [collapsed, setCollapsed] = useState(false);
   const navigate = useNavigate();
 
+  //This function has to deal with auth
+
   const onClick = (e) => {
     console.log('click ', e);
-    navigate('/'+e.key)
+    token === null ? navigate('/') : navigate('/'+e.key)
   };
 
   return (
@@ -32,9 +34,9 @@ const LayoutComponent = () => {
           onClick={onClick}
           items={[
             {
-              key: 'users',
+              key: '',
               icon: <UserOutlined />,
-              label: 'Login',
+              label: 'Home',
             },
             {
               key: 'companies',
