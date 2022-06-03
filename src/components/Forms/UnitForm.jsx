@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Modal } from 'antd';
+import { Form, Input, Button, Select, Modal } from 'antd';
 
 const UnitForm = ({vis, setVis}) => {
 
@@ -26,7 +26,15 @@ const UnitForm = ({vis, setVis}) => {
       confirmLoading={confirmLoading}
       onCancel={handleCancel}
     >
-      UnitsForm
+      <Form>
+        <Form.Item
+            label="Unitname"
+            name="unitname"
+            rules={[{ required: true, message: 'Please input your unit name!' }]}
+          >
+            <Input />
+          </Form.Item>
+      </Form>
     </Modal>
     )
 }

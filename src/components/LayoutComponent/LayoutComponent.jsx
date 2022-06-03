@@ -43,11 +43,6 @@ const LayoutComponent = ({token}) => {
               icon: <VideoCameraOutlined />,
               label: 'Companies',
             },
-            {
-              key: 'units',
-              icon: <UploadOutlined />,
-              label: 'Units',
-            },
           ]}
         >
         </Menu>

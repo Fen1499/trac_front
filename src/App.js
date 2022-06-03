@@ -5,10 +5,7 @@ import LayoutComponent from './components/LayoutComponent/LayoutComponent';
 import UnitsPage from './components/Pages/UnitsPage';
 import HomePage from './components/Pages/HomePage';
 import CompaniesPage from './components/Pages/CompaniesPage';
-
-const AuthComponent = ({ children }) => {
-
-}
+import UsersPage from './components/Pages/UsersPage';
 
 const App = () => {
   const [token, setToken] = React.useState(null);
@@ -40,7 +37,7 @@ const App = () => {
     <Routes>
       <Route element={<LayoutComponent token={ token }/>}>
         <Route path="/" element={<HomePage handleLogin={handleLogin} handleLogout={handleLogout}/>}></Route>
-        <Route path="users" element={null}></Route>
+        <Route path="users" element={<UsersPage/>}></Route>
         <Route path="companies" element={<CompaniesPage/>}></Route>
         <Route path="units" element={<UnitsPage />}></Route>
       </Route>

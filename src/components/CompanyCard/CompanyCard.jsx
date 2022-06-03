@@ -1,5 +1,6 @@
 import { Card, Row, Col, Button, Space } from 'antd';
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import UnitForm from '../Forms/UnitForm';
 import UserForm from "../Forms/UserForm";
 const CompanyCard = () => {
@@ -9,15 +10,18 @@ const CompanyCard = () => {
     'flex-direction': 'column',
   }
 
-  const imgStyle = {
-    width: '50%',
-    heigth: '50%'
-  }
+  const navigate = useNavigate();
+  const onClick = (e) => {
+    console.log('click ', e);
+    //token === null ? navigate('/') : navigate('/'+e.key)
+    navigate('/'+e)
+  };
 
-  const [visible, setVisible] = useState(false);
+  const [visibleUserForm, setVisibleUserForm] = useState(false);
+  const [visibleUnitForm, setVisibleUnitForm] = useState(false);
 
-  const showModal = () => { 
-    setVisible(true);
+  const showModal = (setter) => {  
+    setter(true);
   };
 
   return (
@@ -31,20 +35,20 @@ const CompanyCard = () => {
           >
             <Space>
               <Space direction="vertical">
-                <Button> View Users </Button>
-                <Button onClick={() => showModal()}> Add User</Button>
+                <Button onClick={() => onClick('users')}> View Users </Button>
+                <Button onClick={() => showModal(setVisibleUserForm)}> Add User</Button>
               </Space>
               <Space direction="vertical">
-                <Button> View Units </Button>
-                <Button onClick={() => showModal()}> Add Unit </Button>
+                <Button onClick={() => onClick('units')}> View Units </Button>
+                <Button onClick={() => showModal(setVisibleUnitForm)}> Add Unit </Button>
               </Space>
 
             </Space>
           </Card>
         </Col>
       </Row>
-      <UserForm vis={visible} setVis={setVisible}/>
-      <UnitForm vis={visible} setVis={setVisible}/>
+      <UserForm vis={visibleUserForm} setVis={setVisibleUserForm}/>
+      <UnitForm vis={visibleUnitForm} setVis={setVisibleUnitForm}/>
     </div>
 
   )
